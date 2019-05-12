@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
 
-<form action="calculator" method="post">
-    Weight: <input name="weight" type="number"> <br/>
-    Height: <input name="height" type="number"> <br/>
+<form action="calculator" method="post" th:object="${BMIForm}">
+    Weight: <input th:field="*{weight}" type="number"> <br/>
+    Height: <input th:field="*{height}" type="number"> <br/>
 
     <input type="submit" value="send">
 

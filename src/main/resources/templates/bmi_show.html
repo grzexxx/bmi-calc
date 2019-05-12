@@ -8,7 +8,13 @@
 <center> <h1 style="color: darkred"> BMI:  <span th:text="${bmi}"></span> </h1> </center>
 <span th:text="${bmi}"></span>
 
-<div> <span th:if="${bmi <18.5}">not enougth waight</span> </div>
+<div> <span th:if="${bmi <18.5}">not enough weight</span> </div>
+
+<div> <span th:if="${bmi >18.5 && bmi<24.5}">awesome</span> </div>
+
+<div> <span th:if="${bmi >24.5 && bmi<30}">you are to heavy</span> </div>
+
+<div> <span th:if="${bmi >30 && bmi<999}">you are like a elephant</span> </div>
 
 </body>
 </html>
