@@ -3,11 +3,14 @@ package pl.gjahn.BMIcalc;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import pl.gjahn.BMIcalc.model.BMIForm;
+
+import javax.validation.Valid;
 
 @Controller
 public class BMIController {
@@ -26,8 +29,13 @@ public class BMIController {
     }
 
     @PostMapping("/calculator")
-    public String calculator(@ModelAttribute ("BMIForm") BMIForm bmiForm,
+    public String calculator(@ModelAttribute @Valid   BMIForm bmiForm, BindingResult bindingResult,
                              Model model) {
+
+        if(bindingResult.hasErrors()){
+            model.addAttribute("error", "dwarf and giants are not serviced");
+            return  "bmi_show";
+        }
 
 
         double BMI = (bmiForm.getWeight()/((bmiForm.getHeight()/100)*(bmiForm.getHeight()/100)));
